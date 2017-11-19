@@ -30,7 +30,16 @@ func (p Position) Forward() Position {
 }
 
 func (p Position) Backward() Position {
-	p.Y--
+	switch p.Heading {
+	case NORTH:
+		p.Y--
+	case EAST:
+		p.X--
+	case SOUTH:
+		p.Y++
+	case WEST:
+		p.X++
+	}
 	return p
 }
 
