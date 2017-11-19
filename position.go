@@ -21,8 +21,14 @@ func (p Position) Forward() Position {
 	switch p.Heading {
 	case NORTH:
 		p.Y++
+		if p.Y == gridSize {
+			p.Y = 0
+		}
 	case EAST:
 		p.X++
+		if p.X == gridSize {
+			p.X = 0
+		}
 	case SOUTH:
 		if p.Y == 0 {
 			p.Y = gridSize

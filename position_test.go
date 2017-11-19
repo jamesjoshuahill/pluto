@@ -18,32 +18,44 @@ var _ = Describe("Position", func() {
 
 	DescribeTable("moving forward",
 		func(heading pluto.Heading, expectedX, expectedY int) {
-			position := pluto.Position{Heading: heading}
+			position := pluto.Position{X: 1, Y: 1, Heading: heading}
 			Expect(position.Forward()).To(Equal(pluto.Position{
 				X:       expectedX,
 				Y:       expectedY,
 				Heading: heading,
 			}))
 		},
-		Entry("north", pluto.NORTH, 0, 1),
-		Entry("east", pluto.EAST, 1, 0),
-		Entry("south", pluto.SOUTH, 0, 99),
-		Entry("west", pluto.WEST, 99, 0),
+		Entry("north", pluto.NORTH, 1, 2),
+		Entry("east", pluto.EAST, 2, 1),
+		Entry("south", pluto.SOUTH, 1, 0),
+		Entry("west", pluto.WEST, 0, 1),
 	)
+
+	It("circles the pole moving forwards", func() {
+		position := pluto.Position{X: 1, Y: 1, Heading: pluto.WEST}
+		position = position.Forward().Forward()
+		Expect(position).To(Equal(pluto.Position{X: 99, Y: 1, Heading: pluto.WEST}))
+		position = position.Left().Forward().Forward()
+		Expect(position).To(Equal(pluto.Position{X: 99, Y: 99, Heading: pluto.SOUTH}))
+		position = position.Left().Forward().Forward()
+		Expect(position).To(Equal(pluto.Position{X: 1, Y: 99, Heading: pluto.EAST}))
+		position = position.Left().Forward().Forward()
+		Expect(position).To(Equal(pluto.Position{X: 1, Y: 1, Heading: pluto.NORTH}))
+	})
 
 	DescribeTable("moving backward",
 		func(heading pluto.Heading, expectedX, expectedY int) {
-			position := pluto.Position{Heading: heading}
+			position := pluto.Position{X: 1, Y: 1, Heading: heading}
 			Expect(position.Backward()).To(Equal(pluto.Position{
 				X:       expectedX,
 				Y:       expectedY,
 				Heading: heading,
 			}))
 		},
-		Entry("north", pluto.NORTH, 0, 99),
-		Entry("east", pluto.EAST, 99, 0),
-		Entry("south", pluto.SOUTH, 0, 1),
-		Entry("west", pluto.WEST, 1, 0),
+		Entry("north", pluto.NORTH, 1, 0),
+		Entry("east", pluto.EAST, 0, 1),
+		Entry("south", pluto.SOUTH, 1, 2),
+		Entry("west", pluto.WEST, 2, 1),
 	)
 
 	DescribeTable("turning right",
