@@ -13,7 +13,12 @@ func (r Rover) Position() Position {
 }
 
 func (r *Rover) Do(command string) {
-	r.position = r.position.Forward()
+	switch command {
+	case forward:
+		r.position = r.position.Forward()
+	case backward:
+		r.position = r.position.Backward()
+	}
 }
 
 type Position struct {
@@ -27,6 +32,16 @@ func (p Position) Forward() Position {
 	return p
 }
 
+func (p Position) Backward() Position {
+	p.Y--
+	return p
+}
+
 type Heading int
 
 const NORTH Heading = 0
+
+const (
+	forward = "F"
+	backward = "B"
+)
