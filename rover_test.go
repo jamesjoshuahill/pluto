@@ -13,27 +13,21 @@ var _ = Describe("Rover", func() {
 		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: 0, Heading: pluto.NORTH}))
 	})
 
-	It("can move forward", func() {
+	It("can do one command", func() {
 		rover := pluto.NewRover()
 		rover.Do("F")
 		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: 1, Heading: pluto.NORTH}))
 	})
 
-	It("can move backward", func() {
+	It("can do all four commands", func() {
 		rover := pluto.NewRover()
-		rover.Do("B")
-		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: -1, Heading: pluto.NORTH}))
+		rover.Do("FLBR")
+		Expect(rover.Position()).To(Equal(pluto.Position{X: 1, Y: 1, Heading: pluto.NORTH}))
 	})
 
-	It("can turn right", func() {
+	It("can do many commands", func() {
 		rover := pluto.NewRover()
-		rover.Do("R")
-		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: 0, Heading: pluto.EAST}))
-	})
-
-	It("can turn left", func() {
-		rover := pluto.NewRover()
-		rover.Do("L")
-		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: 0, Heading: pluto.WEST}))
+		rover.Do("FFRFF")
+		Expect(rover.Position()).To(Equal(pluto.Position{X: 2, Y: 2, Heading: pluto.EAST}))
 	})
 })

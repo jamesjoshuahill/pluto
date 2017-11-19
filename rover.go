@@ -19,15 +19,17 @@ func (r Rover) Position() Position {
 	return r.position
 }
 
-func (r *Rover) Do(command string) {
-	switch command {
-	case forward:
-		r.position = r.position.Forward()
-	case backward:
-		r.position = r.position.Backward()
-	case right:
-		r.position = r.position.Right()
-	case left:
-		r.position = r.position.Left()
+func (r *Rover) Do(commands string) {
+	for _, command := range commands {
+		switch string(command) {
+		case forward:
+			r.position = r.position.Forward()
+		case backward:
+			r.position = r.position.Backward()
+		case right:
+			r.position = r.position.Right()
+		case left:
+			r.position = r.position.Left()
+		}
 	}
 }
