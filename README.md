@@ -13,7 +13,7 @@ $ go get github.com/jamesjoshuahill/pluto
 ```golang
 rover := pluto.NewRover()
 rover.Do("FFRFF")
-rover.Position()  // pluto.Position{X: 2, Y: 2, Heading: pluto.EAST}
+rover.Position()  // pluto.Position{X: 2, Y: 2, Heading: 90}
 ```
 
 ## Test

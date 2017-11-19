@@ -3,13 +3,16 @@ package pluto
 type Heading int
 
 const (
-	NORTH Heading = iota
-	EAST
-	SOUTH
-	WEST
-)
+	NORTH Heading = 0
+	EAST  Heading = 90
+	SOUTH Heading = 180
+	WEST  Heading = 270
 
-const gridSize = 100
+	gridSize = 100
+
+	maxDegrees  = 360
+	turnDegrees = 90
+)
 
 type Position struct {
 	X       int
@@ -46,20 +49,12 @@ func (p Position) Backward() Position {
 }
 
 func (p Position) Right() Position {
-	if p.Heading == WEST {
-		p.Heading = NORTH
-	} else {
-		p.Heading++
-	}
+	p.Heading = (p.Heading + turnDegrees) % maxDegrees
 	return p
 }
 
 func (p Position) Left() Position {
-	if p.Heading == NORTH {
-		p.Heading = WEST
-	} else {
-		p.Heading--
-	}
+	p.Heading = (maxDegrees + p.Heading - turnDegrees) % maxDegrees
 	return p
 }
 
