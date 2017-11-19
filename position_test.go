@@ -4,6 +4,7 @@ import (
 	"github.com/jamesjoshuahill/pluto"
 
 	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
 )
 
@@ -25,28 +26,25 @@ var _ = Describe("Position", func() {
 		Expect(position.Backward()).To(Equal(pluto.Position{X: 0, Y: -1}))
 	})
 
-	It("knows east is right of north", func() {
-		position := pluto.Position{}
-		Expect(position.Right()).To(Equal(pluto.Position{Heading: pluto.EAST}))
-	})
+	DescribeTable("turning right",
+		func(initial, expected pluto.Heading) {
+			position := pluto.Position{Heading: initial}
+			Expect(position.Right()).To(Equal(pluto.Position{Heading: expected}))
+		},
+		Entry("north -> east", pluto.NORTH, pluto.EAST),
+		Entry("east -> south", pluto.EAST, pluto.SOUTH),
+		Entry("south -> west", pluto.SOUTH, pluto.WEST),
+		Entry("west -> north", pluto.WEST, pluto.NORTH),
+	)
 
-	It("knows south is right of east", func() {
-		position := pluto.Position{Heading: pluto.EAST}
-		Expect(position.Right()).To(Equal(pluto.Position{Heading: pluto.SOUTH}))
-	})
-
-	It("knows north is right of west", func() {
-		position := pluto.Position{Heading: pluto.WEST}
-		Expect(position.Right()).To(Equal(pluto.Position{Heading: pluto.NORTH}))
-	})
-
-	It("knows west is left of north", func() {
-		position := pluto.Position{}
-		Expect(position.Left()).To(Equal(pluto.Position{Heading: pluto.WEST}))
-	})
-
-	It("knows south is left of west", func() {
-		position := pluto.Position{Heading: pluto.WEST}
-		Expect(position.Left()).To(Equal(pluto.Position{Heading: pluto.SOUTH}))
-	})
+	DescribeTable("turning left",
+		func(initial, expected pluto.Heading) {
+			position := pluto.Position{Heading: initial}
+			Expect(position.Left()).To(Equal(pluto.Position{Heading: expected}))
+		},
+		Entry("north -> west", pluto.NORTH, pluto.WEST),
+		Entry("west -> south", pluto.WEST, pluto.SOUTH),
+		Entry("south -> east", pluto.SOUTH, pluto.EAST),
+		Entry("east -> north", pluto.EAST, pluto.NORTH),
+	)
 })
