@@ -30,8 +30,23 @@ var _ = Describe("Position", func() {
 		Expect(position.Right()).To(Equal(pluto.Position{Heading: pluto.EAST}))
 	})
 
+	It("knows south is right of east", func() {
+		position := pluto.Position{Heading: pluto.EAST}
+		Expect(position.Right()).To(Equal(pluto.Position{Heading: pluto.SOUTH}))
+	})
+
+	It("knows north is right of west", func() {
+		position := pluto.Position{Heading: pluto.WEST}
+		Expect(position.Right()).To(Equal(pluto.Position{Heading: pluto.NORTH}))
+	})
+
 	It("knows west is left of north", func() {
 		position := pluto.Position{}
 		Expect(position.Left()).To(Equal(pluto.Position{Heading: pluto.WEST}))
+	})
+
+	It("knows south is left of west", func() {
+		position := pluto.Position{Heading: pluto.WEST}
+		Expect(position.Left()).To(Equal(pluto.Position{Heading: pluto.SOUTH}))
 	})
 })

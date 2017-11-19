@@ -5,7 +5,7 @@ type Heading int
 const (
 	NORTH Heading = iota
 	EAST
-	_
+	SOUTH
 	WEST
 )
 
@@ -26,11 +26,19 @@ func (p Position) Backward() Position {
 }
 
 func (p Position) Right() Position {
-	p.Heading++
+	if p.Heading == WEST {
+		p.Heading = NORTH
+	} else {
+		p.Heading++
+	}
 	return p
 }
 
 func (p Position) Left() Position {
-	p.Heading = WEST
+	if p.Heading == NORTH {
+		p.Heading = WEST
+	} else {
+		p.Heading--
+	}
 	return p
 }
