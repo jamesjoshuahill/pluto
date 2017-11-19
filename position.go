@@ -50,7 +50,6 @@ func (p Position) Backward() Position {
 			p.Y = gridSize
 		}
 		p.Y--
-
 	case EAST:
 		if p.X == 0 {
 			p.X = gridSize
@@ -58,8 +57,14 @@ func (p Position) Backward() Position {
 		p.X--
 	case SOUTH:
 		p.Y++
+		if p.Y == gridSize {
+			p.Y = 0
+		}
 	case WEST:
 		p.X++
+		if p.X == gridSize {
+			p.X = 0
+		}
 	}
 	return p
 }

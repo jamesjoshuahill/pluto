@@ -58,6 +58,18 @@ var _ = Describe("Position", func() {
 		Entry("west", pluto.WEST, 2, 1),
 	)
 
+	It("circles the pole moving backwards", func() {
+		position := pluto.Position{X: 1, Y: 1, Heading: pluto.NORTH}
+		position = position.Backward().Backward()
+		Expect(position).To(Equal(pluto.Position{X: 1, Y: 99, Heading: pluto.NORTH}))
+		position = position.Right().Backward().Backward()
+		Expect(position).To(Equal(pluto.Position{X: 99, Y: 99, Heading: pluto.EAST}))
+		position = position.Right().Backward().Backward()
+		Expect(position).To(Equal(pluto.Position{X: 99, Y: 1, Heading: pluto.SOUTH}))
+		position = position.Right().Backward().Backward()
+		Expect(position).To(Equal(pluto.Position{X: 1, Y: 1, Heading: pluto.WEST}))
+	})
+
 	DescribeTable("turning right",
 		func(initial, expected pluto.Heading) {
 			position := pluto.Position{Heading: initial}
