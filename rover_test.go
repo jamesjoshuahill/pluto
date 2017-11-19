@@ -24,4 +24,10 @@ var _ = Describe("Rover", func() {
 		rover.Do("B")
 		Expect(rover.Position()).To(Equal(pluto.Position{X:0, Y: -1, Heading: pluto.NORTH}))
 	})
+
+	It("can turn right", func() {
+		rover := pluto.NewRover()
+		rover.Do("R")
+		Expect(rover.Position()).To(Equal(pluto.Position{X:0, Y: 0, Heading: pluto.EAST}))
+	})
 })
