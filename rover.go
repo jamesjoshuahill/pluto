@@ -1,5 +1,12 @@
 package pluto
 
+const (
+	forward = "F"
+	backward = "B"
+	right = "R"
+	left = "L"
+)
+
 type Rover struct {
 	position Position
 }
@@ -24,45 +31,3 @@ func (r *Rover) Do(command string) {
 		r.position = r.position.Left()
 	}
 }
-
-type Position struct {
-	X int
-	Y int
-	Heading Heading
-}
-
-func (p Position) Forward() Position {
-	p.Y++
-	return p
-}
-
-func (p Position) Backward() Position {
-	p.Y--
-	return p
-}
-
-func (p Position) Right() Position {
-	p.Heading++
-	return p
-}
-
-func (p Position) Left() Position {
-	p.Heading = WEST
-	return p
-}
-
-type Heading int
-
-const (
-	NORTH Heading = iota
-	EAST
-	_
-	WEST
-)
-
-const (
-	forward = "F"
-	backward = "B"
-	right = "R"
-	left = "L"
-)
