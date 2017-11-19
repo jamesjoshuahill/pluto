@@ -23,7 +23,7 @@ The test suite uses [Ginkgo](https://onsi.github.io/ginkgo/) and [Gomega](https:
 ```bash
 $ cd $GOPATH/src/github.com/jamesjoshuahill/pluto
 $ go get github.com/onsi/ginkgo/ginkgo
-$ ginkgo -randomizeAllSpecs -race -cover
+$ ginkgo -randomizeAllSpecs -cover
 ```
 
 ## Exercise
