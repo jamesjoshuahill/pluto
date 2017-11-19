@@ -1,10 +1,10 @@
 package pluto
 
 const (
-	forward = "F"
+	forward  = "F"
 	backward = "B"
-	right = "R"
-	left = "L"
+	right    = "R"
+	left     = "L"
 )
 
 type Rover struct {

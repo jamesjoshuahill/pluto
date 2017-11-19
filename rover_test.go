@@ -22,18 +22,18 @@ var _ = Describe("Rover", func() {
 	It("can move backward", func() {
 		rover := pluto.NewRover()
 		rover.Do("B")
-		Expect(rover.Position()).To(Equal(pluto.Position{X:0, Y: -1, Heading: pluto.NORTH}))
+		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: -1, Heading: pluto.NORTH}))
 	})
 
 	It("can turn right", func() {
 		rover := pluto.NewRover()
 		rover.Do("R")
-		Expect(rover.Position()).To(Equal(pluto.Position{X:0, Y: 0, Heading: pluto.EAST}))
+		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: 0, Heading: pluto.EAST}))
 	})
 
 	It("can turn left", func() {
 		rover := pluto.NewRover()
 		rover.Do("L")
-		Expect(rover.Position()).To(Equal(pluto.Position{X:0, Y: 0, Heading: pluto.WEST}))
+		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: 0, Heading: pluto.WEST}))
 	})
 })

@@ -10,8 +10,8 @@ const (
 )
 
 type Position struct {
-	X int
-	Y int
+	X       int
+	Y       int
 	Heading Heading
 }
 
