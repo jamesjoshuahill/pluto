@@ -1,6 +1,6 @@
 # Pluto Rover Kata
 
-[![Build Status](https://travis-ci.org/jamesjoshuahill/pluto.svg?branch=master)](https://travis-ci.org/jamesjoshuahill/pluto) [![GoDoc](https://godoc.org/github.com/jamesjoshuahill/pluto?status.svg)](https://godoc.org/github.com/jamesjoshuahill/pluto) [![Go Report Card](https://goreportcard.com/badge/github.com/jamesjoshuahill/pluto)](https://goreportcard.com/report/github.com/jamesjoshuahill/pluto)
+[![Build Status](https://travis-ci.org/jamesjoshuahill/pluto.svg?branch=master)](https://travis-ci.org/jamesjoshuahill/pluto) [![Go Report Card](https://goreportcard.com/badge/github.com/jamesjoshuahill/pluto)](https://goreportcard.com/report/github.com/jamesjoshuahill/pluto) [![GoDoc](https://godoc.org/github.com/jamesjoshuahill/pluto?status.svg)](https://godoc.org/github.com/jamesjoshuahill/pluto)
 
 ## Get
 
