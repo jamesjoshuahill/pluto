@@ -16,7 +16,16 @@ type Position struct {
 }
 
 func (p Position) Forward() Position {
-	p.Y++
+	switch p.Heading {
+	case NORTH:
+		p.Y++
+	case EAST:
+		p.X++
+	case SOUTH:
+		p.Y--
+	case WEST:
+		p.X--
+	}
 	return p
 }
 
