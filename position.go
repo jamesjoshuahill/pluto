@@ -20,13 +20,13 @@ type Position struct {
 func (p Position) Forward() Position {
 	switch p.Heading {
 	case NORTH:
-		p.incrementY()
+		p.Y = increment(p.Y)
 	case EAST:
-		p.incrementX()
+		p.X = increment(p.X)
 	case SOUTH:
-		p.decrementY()
+		p.Y = decrement(p.Y)
 	case WEST:
-		p.decrementX()
+		p.X = decrement(p.X)
 	}
 	return p
 }
@@ -34,13 +34,13 @@ func (p Position) Forward() Position {
 func (p Position) Backward() Position {
 	switch p.Heading {
 	case NORTH:
-		p.decrementY()
+		p.Y = decrement(p.Y)
 	case EAST:
-		p.decrementX()
+		p.X = decrement(p.X)
 	case SOUTH:
-		p.incrementY()
+		p.Y = increment(p.Y)
 	case WEST:
-		p.incrementX()
+		p.X = increment(p.X)
 	}
 	return p
 }
@@ -63,32 +63,18 @@ func (p Position) Left() Position {
 	return p
 }
 
-func (p *Position) incrementX() {
-	p.X++
-	if p.X == gridSize {
-		p.X = 0
+func increment(i int) int {
+	i++
+	if i == gridSize {
+		i = 0
 	}
+	return i
 }
 
-func (p *Position) incrementY() {
-	p.Y++
-	if p.Y == gridSize {
-		p.Y = 0
+func decrement(i int) int {
+	if i == 0 {
+		i = gridSize
 	}
-}
-
-func (p *Position) decrementX() {
-	if p.X == 0 {
-		p.X = gridSize
-	}
-	p.X--
-
-}
-
-func (p *Position) decrementY() {
-	if p.Y == 0 {
-		p.Y = gridSize
-	}
-	p.Y--
-
+	i--
+	return i
 }
