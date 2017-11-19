@@ -59,17 +59,9 @@ func (p Position) Left() Position {
 }
 
 func increment(i int) int {
-	i++
-	if i == gridSize {
-		i = 0
-	}
-	return i
+	return (i + 1) % gridSize
 }
 
 func decrement(i int) int {
-	if i == 0 {
-		i = gridSize
-	}
-	i--
-	return i
+	return (gridSize + i - 1) % gridSize
 }
