@@ -9,7 +9,7 @@ const (
 	WEST
 )
 
-const gridWidth = 100
+const gridSize = 100
 
 type Position struct {
 	X       int
@@ -24,8 +24,14 @@ func (p Position) Forward() Position {
 	case EAST:
 		p.X++
 	case SOUTH:
+		if p.Y == 0 {
+			p.Y = gridSize
+		}
 		p.Y--
 	case WEST:
+		if p.X == 0 {
+			p.X = gridSize
+		}
 		p.X--
 	}
 	return p
@@ -35,13 +41,13 @@ func (p Position) Backward() Position {
 	switch p.Heading {
 	case NORTH:
 		if p.Y == 0 {
-			p.Y = gridWidth
+			p.Y = gridSize
 		}
 		p.Y--
 
 	case EAST:
 		if p.X == 0 {
-			p.X = gridWidth
+			p.X = gridSize
 		}
 		p.X--
 	case SOUTH:

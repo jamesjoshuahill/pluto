@@ -27,8 +27,8 @@ var _ = Describe("Position", func() {
 		},
 		Entry("north", pluto.NORTH, 0, 1),
 		Entry("east", pluto.EAST, 1, 0),
-		Entry("south", pluto.SOUTH, 0, -1),
-		Entry("west", pluto.WEST, -1, 0),
+		Entry("south", pluto.SOUTH, 0, 99),
+		Entry("west", pluto.WEST, 99, 0),
 	)
 
 	DescribeTable("moving backward",
