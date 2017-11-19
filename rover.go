@@ -20,8 +20,11 @@ func (r *Rover) Do(command string) {
 		r.position = r.position.Backward()
 	case right:
 		r.position = r.position.Right()
+	case left:
+		r.position = r.position.Left()
 	}
 }
+
 type Position struct {
 	X int
 	Y int
@@ -43,15 +46,23 @@ func (p Position) Right() Position {
 	return p
 }
 
+func (p Position) Left() Position {
+	p.Heading = WEST
+	return p
+}
+
 type Heading int
 
 const (
 	NORTH Heading = iota
 	EAST
+	_
+	WEST
 )
 
 const (
 	forward = "F"
 	backward = "B"
 	right = "R"
+	left = "L"
 )
