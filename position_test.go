@@ -40,8 +40,8 @@ var _ = Describe("Position", func() {
 				Heading: heading,
 			}))
 		},
-		Entry("north", pluto.NORTH, 0, -1),
-		Entry("east", pluto.EAST, -1, 0),
+		Entry("north", pluto.NORTH, 0, 99),
+		Entry("east", pluto.EAST, 99, 0),
 		Entry("south", pluto.SOUTH, 0, 1),
 		Entry("west", pluto.WEST, 1, 0),
 	)

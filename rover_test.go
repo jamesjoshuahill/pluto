@@ -32,4 +32,9 @@ var _ = Describe("Rover", func() {
 		rover.Do("FFRFF")
 		Expect(rover.Position()).To(Equal(pluto.Position{X: 2, Y: 2, Heading: pluto.EAST}))
 	})
+
+	It("can wrap around longitude", func() {
+		rover.Do("BB")
+		Expect(rover.Position()).To(Equal(pluto.Position{X: 0, Y: 98, Heading: pluto.NORTH}))
+	})
 })
