@@ -14,22 +14,26 @@ const (
 	turnDegrees = 90
 )
 
+type Coordinate struct {
+	X int
+	Y int
+}
+
 type Position struct {
-	X       int
-	Y       int
-	Heading Heading
+	Coordinate Coordinate
+	Heading    Heading
 }
 
 func (p Position) Forward() Position {
 	switch p.Heading {
 	case NORTH:
-		p.Y = increment(p.Y)
+		p.Coordinate.Y = increment(p.Coordinate.Y)
 	case EAST:
-		p.X = increment(p.X)
+		p.Coordinate.X = increment(p.Coordinate.X)
 	case SOUTH:
-		p.Y = decrement(p.Y)
+		p.Coordinate.Y = decrement(p.Coordinate.Y)
 	case WEST:
-		p.X = decrement(p.X)
+		p.Coordinate.X = decrement(p.Coordinate.X)
 	}
 	return p
 }
@@ -37,13 +41,13 @@ func (p Position) Forward() Position {
 func (p Position) Backward() Position {
 	switch p.Heading {
 	case NORTH:
-		p.Y = decrement(p.Y)
+		p.Coordinate.Y = decrement(p.Coordinate.Y)
 	case EAST:
-		p.X = decrement(p.X)
+		p.Coordinate.X = decrement(p.Coordinate.X)
 	case SOUTH:
-		p.Y = increment(p.Y)
+		p.Coordinate.Y = increment(p.Coordinate.Y)
 	case WEST:
-		p.X = increment(p.X)
+		p.Coordinate.X = increment(p.Coordinate.X)
 	}
 	return p
 }
