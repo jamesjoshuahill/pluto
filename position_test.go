@@ -74,25 +74,13 @@ var _ = Describe("Position", func() {
 		Expect(position).To(Equal(pluto.Position{Coordinate: pluto.Coordinate{X: 1, Y: 1}, Heading: pluto.WEST}))
 	})
 
-	DescribeTable("turning right",
-		func(initial, expected pluto.Heading) {
-			position := pluto.Position{Heading: initial}
-			Expect(position.Right()).To(Equal(pluto.Position{Heading: expected}))
-		},
-		Entry("north -> east", pluto.NORTH, pluto.EAST),
-		Entry("east -> south", pluto.EAST, pluto.SOUTH),
-		Entry("south -> west", pluto.SOUTH, pluto.WEST),
-		Entry("west -> north", pluto.WEST, pluto.NORTH),
-	)
+	It("turns right", func() {
+		position := pluto.Position{Heading: pluto.NORTH}
+		Expect(position.Right()).To(Equal(pluto.Position{Heading: pluto.EAST}))
+	})
 
-	DescribeTable("turning left",
-		func(initial, expected pluto.Heading) {
-			position := pluto.Position{Heading: initial}
-			Expect(position.Left()).To(Equal(pluto.Position{Heading: expected}))
-		},
-		Entry("north -> west", pluto.NORTH, pluto.WEST),
-		Entry("west -> south", pluto.WEST, pluto.SOUTH),
-		Entry("south -> east", pluto.SOUTH, pluto.EAST),
-		Entry("east -> north", pluto.EAST, pluto.NORTH),
-	)
+	It("turns left", func() {
+		position := pluto.Position{Heading: pluto.NORTH}
+		Expect(position.Left()).To(Equal(pluto.Position{Heading: pluto.WEST}))
+	})
 })

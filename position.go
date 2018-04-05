@@ -1,16 +1,7 @@
 package pluto
 
-type Heading int
-
 const (
-	NORTH Heading = 0
-	EAST  Heading = 90
-	SOUTH Heading = 180
-	WEST  Heading = 270
-
-	gridSize = 100
-
-	maxDegrees  = 360
+	gridSize    = 100
 	turnDegrees = 90
 )
 
@@ -53,12 +44,12 @@ func (p Position) Backward() Position {
 }
 
 func (p Position) Right() Position {
-	p.Heading = (p.Heading + turnDegrees) % maxDegrees
+	p.Heading = p.Heading.Turn(turnDegrees)
 	return p
 }
 
 func (p Position) Left() Position {
-	p.Heading = (maxDegrees + p.Heading - turnDegrees) % maxDegrees
+	p.Heading = p.Heading.Turn(-turnDegrees)
 	return p
 }
 
